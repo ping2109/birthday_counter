@@ -33,21 +33,21 @@ def main():
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
-        time.sleep(10 * 60)
+        time.sleep(3600)
     if days > 0:
         telegram_notify = telegram.Bot(bot_token)
         message = (f"""{username}'s birthday was {format(days)} days ago. Hope it was great!""")
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
-        time.sleep(10 * 60)
+        time.sleep(3600)
     else:
         telegram_notify = telegram.Bot(bot_token)
         message = (f"""Happy Birthday to {username}!""")
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
-        time.sleep(10 * 60)
+        time.sleep(3600)
 
         
 main()
