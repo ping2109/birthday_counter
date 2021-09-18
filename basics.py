@@ -23,24 +23,28 @@ def compute_birthday_difference(original_date, now):
 
 def print_bday_info(days):
     if days < 0:
-        print('Your birthday is in {} days.'.format(-days))
+        telegram_notify = telegram.Bot(bot_token)
+        message = """'Your birthday is in {} days.'.format(-days)"""
+
+        telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
+                                parse_mode='Markdown')
     elif days > 0:
-        print('Your birthday was {} days ago. Hope it was great!'.format(days))
+        telegram_notify = telegram.Bot(bot_token)
+        message = """'Your birthday was {} days ago. Hope it was great!'.format(days)"""
+
+        telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
+                                parse_mode='Markdown')
     else:
-        print('Happy Birthday!')
+        telegram_notify = telegram.Bot(bot_token)
+        message = """'Happy Birthday!'"""
+
+        telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
+                                parse_mode='Markdown')
 
 def main():
     bday = get_user_birthday()
     now = datetime.datetime.now()
     days = compute_birthday_difference(bday, now)
     print_bday_info(days)
-    try:
-        telegram_notify = telegram.Bot(bot_token)
-        message = f"""'Your birthday is in {} days.'.format(-days)"""
-
-        telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
-                                parse_mode='Markdown')
-    except Exception as ex:
-        print(ex)
 
 main()
