@@ -22,10 +22,19 @@ def compute_birthday_difference(original_date, now):
     return days
 
 def print_bday_info(days):
+    if days < 0:
+        print('Your birthday is in {} days.'.format(-days))
+    elif days > 0:
+        print('Your birthday was {} days ago. Hope it was great!'.format(days))
+    else:
+        print('Happy Birthday!')
+
+def main():
     bday = get_user_birthday()
     now = datetime.datetime.now()
     days = compute_birthday_difference(bday, now)
-    if days < 0:
+    print_bday_info(days)
+        if days < 0:
         telegram_notify = telegram.Bot(bot_token)
         message = """'Your birthday is in {} days.'.format(-days)"""
 
@@ -43,5 +52,5 @@ def print_bday_info(days):
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
-
-print_bday_info(days)
+        
+main()
