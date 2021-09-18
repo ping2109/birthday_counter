@@ -4,9 +4,9 @@ from datetime import timedelta
 from datetime import datetime
 
 def get_birthday_from_user():
-    year = int(2007)
-    month = int(09)
-    day = int(21)
+    year = int('2007')
+    month = int('09')
+    day = int('21')
     print('It looks like you were born on {}/{}/{}.'.format(month, day, year))
     birthday = datetime.date(year, month, day)
     return birthday
