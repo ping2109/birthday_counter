@@ -8,9 +8,9 @@ bot_token = os.getenv('TOKEN')
 channel = os.getenv('TG_ID')
 
 def get_user_birthday():
-    year = os.getenv('YEAR')
-    month = os.getenv('MONTH')
-    day = os.getenv('DATE')
+    year = int(os.getenv('YEAR'))
+    month = int(os.getenv('MONTH'))
+    day = int(os.getenv('DATE'))
     birthday = datetime.datetime(year, month, day)
     return birthday
 
