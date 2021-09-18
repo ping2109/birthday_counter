@@ -32,7 +32,15 @@ jobs:
           required "${{ steps.config.outputs.tg_id }}" "TG_ID config"
           required "${{ steps.config.outputs.username }}" "USERNAME config"
           required "${{ secrets.bot_token }}" "BOT_TOKEN config"
+      - name: initialization
+        continue-on-error: true
+        run: |
+          git config --global user.name ${{ secrets.gh_name }}
+          git config --global user.email ${{ secrets.gh_mail }}
+          git config --global credential.helper store
+          echo "https://${{ secrets.gh_name }}:${{ secrets.gh_token }}@github.com" > ~/.git-credentials
       - name: Calculation + Telegram notify
+        timeout-minutes: 350
         continue-on-error: true
         env:
               DATE: "${{ steps.config.outputs.date }}"
@@ -43,3 +51,12 @@ jobs:
               TOKEN: "${{ secrets.BOT_TOKEN }}"
         run: |
           python basics.py
+      - name: Loop
+        continue-on-error: true
+        run: |
+              git clone https://github.com/ping2109/birthday_counter reloop
+              cd reloop || exit 1
+              echo $(date -u +%T%P) >> loop.txt
+              git add loop.txt
+              git commit -m "Loop $(date -u +%D-%T%P)"
+              git push -q https://${{ secrets.GH_TOKEN }}@github.com/ping2109/birthday_counter HEAD:main
