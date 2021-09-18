@@ -27,26 +27,26 @@ def main():
     bday = get_user_birthday()
     now = datetime.datetime.now()
     days = compute_birthday_difference(bday, now)
-    while days < 0:
-        telegram_notify = telegram.Bot(bot_token)
-        message = (f"""{username}'s birthday is in {format(-days)} days.""")
-
-        telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
-                                parse_mode='Markdown')
-        time.sleep(1 * 60)
-    elif days > 0:
-        telegram_notify = telegram.Bot(bot_token)
-        message = (f"""{username}'s birthday was {format(days)} days ago. Hope it was great!""")
-
-        telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
-                                parse_mode='Markdown')
-        time.sleep(1 * 60)
-    else:
+    while days == 0:
         telegram_notify = telegram.Bot(bot_token)
         message = (f"""Happy Birthday to {username}!""")
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
         time.sleep(1 * 60)
+        if days < 0:
+            telegram_notify = telegram.Bot(bot_token)
+            message = (f"""{username}'s birthday is in {format(-days)} days.""")
+
+            telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
+                                    parse_mode='Markdown')
+        else:
+            telegram_notify = telegram.Bot(bot_token)
+            message = (f"""{username}'s birthday was {format(days)} days ago. Hope it was great!""")
+
+            telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
+                                    parse_mode='Markdown')
+            time.sleep(1 * 60)
+
         
 main()
