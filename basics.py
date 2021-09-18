@@ -36,7 +36,7 @@ def main():
     print_bday_info(days)
     try:
         telegram_notify = telegram.Bot(bot_token)
-        message = 'Your birthday is in {} days.'.format(-days)
+        message = ('Your birthday is in {} days.'.format(-days))
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
