@@ -34,7 +34,7 @@ def main():
     now = datetime.datetime.now()
     days = compute_birthday_difference(bday, now)
     print_bday_info(days)
-        if days < 0:
+    if days < 0:
         telegram_notify = telegram.Bot(bot_token)
         message = """'Your birthday is in {} days.'.format(-days)"""
 
