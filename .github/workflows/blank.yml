@@ -3,6 +3,7 @@ name: ping2109GSIs Builder
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
