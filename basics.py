@@ -48,7 +48,7 @@ def main():
                                 parse_mode='Markdown')
     else:
         telegram_notify = telegram.Bot(bot_token)
-        message = (Happy Birthday!)
+        message = ('Happy Birthday!')
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
