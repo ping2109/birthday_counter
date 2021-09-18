@@ -1,4 +1,4 @@
-name: ping2109GSIs Builder
+name: bday counter
 
 on:
   push:
