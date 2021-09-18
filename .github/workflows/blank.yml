@@ -1,0 +1,23 @@
+name: ping2109GSIs Builder
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.5'
+      - name: Install python requirements
+        run: |
+          pip install python-telegram-bot pyrogram tgcrypto
+      - name: Telegram Notify
+        continue-on-error: true
+        run: |
+          python basics.py
