@@ -12,7 +12,7 @@ channel = os.getenv('TG_ID')
 def get_user_birthday():
     year = int(os.getenv('YEAR'))
     month = int(os.getenv('MONTH'))
-    day = int(os.getenv('DATE'))
+    day = int(os.getenv('DATE')) + 1
     birthday = datetime.datetime(year, month, day)
     return birthday
 
@@ -36,7 +36,7 @@ def main():
         time.sleep(3600)
     if days > 0:
         telegram_notify = telegram.Bot(bot_token)
-        message = (f"""{username}'s birthday was {format(days)} days ago. Hope it was great!""")
+        message = (f"""{username}'s birthday was {format(days)} days ago.""")
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
