@@ -53,5 +53,6 @@ def main():
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
+    time.sleep(10 * 60)
         
 main()
