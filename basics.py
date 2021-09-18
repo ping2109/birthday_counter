@@ -43,7 +43,7 @@ def main():
                                 parse_mode='Markdown')
     elif days > 0:
         telegram_notify = telegram.Bot(bot_token)
-        message = (f"""{username}'s birthday was {} days ago. Hope it was great!""".format(days))
+        message = (f"""{username}'s birthday was {format(days)} days ago. Hope it was great!""")
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
