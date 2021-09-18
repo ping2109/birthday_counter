@@ -34,8 +34,6 @@ def main():
     now = datetime.datetime.now()
     days = compute_birthday_difference(bday, now)
     print_bday_info(days)
-    
-def send_tg_message():
     try:
         telegram_notify = telegram.Bot(bot_token)
         message = print_bday_info(days)
@@ -46,4 +44,3 @@ def send_tg_message():
         print(ex)
 
 main()
-send_tg_message()
