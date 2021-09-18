@@ -30,12 +30,5 @@ def print_birthday_information(days):
     else:
         print('Happy birthday!')
 
-
-def main():
-    bday = get_birthday_from_user()
-    today = datetime.date.today()
-    number_of_days = int(compute_days_between_dates(bday, today))
-    print_birthday_information(number_of_days)
-
-
+        
 main()
