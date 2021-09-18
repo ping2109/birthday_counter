@@ -22,7 +22,18 @@ jobs:
       - name: Install python requirements
         run: |
           pip install python-telegram-bot pyrogram tgcrypto
+      - name: Check Configuration
+        run: |
+          required "${{ steps.config.outputs.date }}" "DATE secret"
+          required "${{ steps.config.outputs.month }}" "MONTH secret"
+          required "${{ steps.config.outputs.year }}" "YEAR config"
+          required "${{ steps.config.outputs.tg_id }}" "TG_ID config"
       - name: Calculation + Telegram notify
         continue-on-error: true
+        env:
+              DATE: ${{ steps.config.outputs.date }}
+              MONTH: ${{ steps.config.outputs.month }}
+              YEAR: ${{ steps.config.outputs.year }}
+              TG_ID: $${{ steps.config.outputs.tg_id }}
         run: |
           python basics.py
