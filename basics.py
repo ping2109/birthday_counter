@@ -36,7 +36,7 @@ def main():
         time.sleep(3600)
     if days > 0:
         telegram_notify = telegram.Bot(bot_token)
-        message = (f"""{username}'s birthday was {format(days)} days ago.""")
+        message = (f"""{username}'s birthday is in {365-format(days)} days.""")
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
