@@ -28,12 +28,14 @@ jobs:
           required "${{ steps.config.outputs.month }}" "MONTH secret"
           required "${{ steps.config.outputs.year }}" "YEAR config"
           required "${{ steps.config.outputs.tg_id }}" "TG_ID config"
+          required "${{ secrets.bot_token }}" "BOT_TOKEN config"
       - name: Calculation + Telegram notify
         continue-on-error: true
         env:
-              DATE: ${{ steps.config.outputs.date }}
-              MONTH: ${{ steps.config.outputs.month }}
-              YEAR: ${{ steps.config.outputs.year }}
-              TG_ID: $${{ steps.config.outputs.tg_id }}
+              DATE: "${{ steps.config.outputs.date }}"
+              MONTH: "${{ steps.config.outputs.month }}"
+              YEAR: "${{ steps.config.outputs.year }}"
+              TG_ID: "${{ steps.config.outputs.tg_id }}"
+              TOKEN: "${{ secrets.BOT_TOKEN }}"
         run: |
           python basics.py
