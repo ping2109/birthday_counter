@@ -27,6 +27,7 @@ def main():
     bday = get_user_birthday()
     now = datetime.datetime.now()
     days = compute_birthday_difference(bday, now)
+    days2 = int(365)
     while days < 0:
         telegram_notify = telegram.Bot(bot_token)
         message = (f"""{username}'s birthday is in {format(-days)} days.""")
