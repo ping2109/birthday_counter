@@ -36,19 +36,19 @@ def main():
     print_bday_info(days)
     if days < 0:
         telegram_notify = telegram.Bot(bot_token)
-        message = """'Your birthday is in {} days.'.format(-days)"""
+        message = ('Your birthday is in {} days.'.format(-days))
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
     elif days > 0:
         telegram_notify = telegram.Bot(bot_token)
-        message = """'Your birthday was {} days ago. Hope it was great!'.format(days)"""
+        message = ('Your birthday was {} days ago. Hope it was great!'.format(days))
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
     else:
         telegram_notify = telegram.Bot(bot_token)
-        message = """'Happy Birthday!'"""
+        message = (Happy Birthday!)
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
