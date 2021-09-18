@@ -10,6 +10,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Load Configuration
+        uses: falti/dotenv-action@v0.2.5
+        id: config
+        with:
+          path: config.env
       - name: Set up python
         uses: actions/setup-python@v2
         with:
@@ -17,7 +22,7 @@ jobs:
       - name: Install python requirements
         run: |
           pip install python-telegram-bot pyrogram tgcrypto
-      - name: Telegram Notify
+      - name: Calculation + Telegram notify
         continue-on-error: true
         run: |
           python basics.py
