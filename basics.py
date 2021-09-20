@@ -12,7 +12,7 @@ channel = os.getenv('TG_ID')
 def get_user_birthday():
     year = int(os.getenv('YEAR'))
     month = int(os.getenv('MONTH'))
-    day = int(os.getenv('DATE')) + 1
+    day = int(os.getenv('DATE'))
     birthday = datetime.datetime(year, month, day)
     return birthday
 
@@ -44,7 +44,7 @@ def main():
         time.sleep(3600)
     else:
         telegram_notify = telegram.Bot(bot_token)
-        message = (f"""Happy Birthday to {username}!""")
+        message = (f"""*Happy birthday to {username}!\nMake a wish 🥳\n\nHis/Her date of birth: {bday}*""")
 
         telegram_notify.send_message(chat_id=channel, text=message, disable_web_page_preview=True,
                                 parse_mode='Markdown')
